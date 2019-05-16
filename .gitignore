@@ -1,1 +1,15 @@
+
+css/style.css
+*.scss
+*.js
+*.md
+*.css
+*.map
+vendor/bootstrap/.editorconfig
+vendor/bootstrap/.eslintignore
+*.yml
+*.html
+*.svg
+*.png
 vendor/bootstrap/.gitattributes
+vendor/bootstrap/build/.stylelintrc
