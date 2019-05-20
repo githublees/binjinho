@@ -1,0 +1,64 @@
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Register</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+<div id="header">
+
+				<div class="top">
+
+						<nav id="nav">
+
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+				</div>
+
+			</div>
+<div id="main">
+					<section id="top" class="one dark cover">
+      <div class="container">
+         <form class="modal-register animate" action="register.jsp" method="post">
+               
+                   <label>User name</label>
+	               <input type="text" class="form-control" placeholder="User name" name="userName" id="userName" required="">
+                
+	               <label>Email</label>
+                   <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="">
+                
+                   <label>Password</label>
+                   <input type="password" class="form-control" placeholder="Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number 
+				and one uppercase and lowercase letter, and at least 8 or more characters" required="">
+                   
+                    <label>Confirm your password</label>
+	                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required="">
+                  
+                   <button type="submit" class="btn btn-black" name="submitButton" value="Submit" id="submitButton">Submit</button>
+                  <button type="reset" class="btn btn-secondary" name="resetButton" value="Clear" id="resetButton">Clear</button>
+                   <a href="login.html"><button type="button" class="btn btn-blue" name="Back" value="Clear" id="resetButton">Back</button></a>
+                
+        </form>
+        </div>
+        </section>
+</div>
+<!-- Password Validation -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+     $("#submitButton").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirmPassword").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                $("#confirmPassword").focus();
+                return false;
+            }
+            return true;
+    });
+       
+</script>
+
+</body></html>
