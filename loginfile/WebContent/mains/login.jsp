@@ -51,7 +51,7 @@
 					<%
 					}else{
 						out.println("<script>alert('Login fail! Please check your information again!')</script>");
-						out.println("<script>window.location.href='./login.html'</script>");
+						out.println("<script>window.location.href='./index.html'</script>");
 
 					}
 
