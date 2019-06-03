@@ -1,6 +1,9 @@
-﻿<!DOCTYPE HTML>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.util.*, java.io.*, java.sql.*" %>
+<!DOCTYPE html>
 <html>
+<head>
 	<head>
 		<title>Prologue by HTML5 UP</title>
 		<meta charset="utf-8" />
@@ -24,7 +27,7 @@
 						<div id="logo">
 							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
 							<a href ="login.html"><button type="login" class="btn btn-black">login</button></a>
-								<p>비회원</p>
+							<p><%= ps.getString("userName") %></p>
 						</div>
 
 					<!-- Nav -->
@@ -62,7 +65,7 @@
 						<div class="container">
 
 							<div class="home-game-list">
-               			 <ol>
+                <ol>
                                             <li class="home-game-list__item home-game-list__item--lol">
                             <a href="https://talk.op.gg/s/lol">
                                 <div class="home-game__background" style="background-image: url('assets/css/images/LOL.JPG');"></div>
@@ -91,8 +94,8 @@
                                 
                             </a>
                         </li>
-                         </ol>
-            				</div>
+                                    </ol>
+            </div>
 
 							<footer>
 								<a href="#portfolio" class="button scrolly">More Game</a>

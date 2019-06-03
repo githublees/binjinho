@@ -26,7 +26,7 @@
 				connect = DriverManager.getConnection(url, uid, pwd);
 
 				if(connect != null){
-					String query = "SELECT count(1) num FROM users WHERE (username = ? OR email = ?)  AND pwd = ?;";
+					String query = "SELECT count(1) num FROM users WHERE (username = ? OR email = ?) AND pwd = ?;";
 
 					PreparedStatement ps = connect.prepareStatement(query);
 					ps.setString(1, userNameOrEmail);
@@ -46,8 +46,7 @@
 
 					if(foundUser){
 					%>
-						<script>window.location='.index.html'</script>
-						
+						<script>window.location='.index.html'</script>	
 					<%
 					}else{
 						out.println("<script>alert('Login fail! Please check your information again!')</script>");

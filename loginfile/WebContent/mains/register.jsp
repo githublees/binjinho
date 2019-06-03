@@ -18,7 +18,8 @@
 			
 
 			String driver = "org.mariadb.jdbc.Driver";		
-			Connection connect = null;			
+			Connection connect = null;
+			Statement stmt = null;
 			String url = "jdbc:mariadb://localhost:3305/registerdb";
 			String uid = "root";
 			String pwd = "wkzm1478";
