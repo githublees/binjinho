@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='http://www.blueb.co.kr/data/201010/IJ12872423858253/fullcalendar.css' />
+<script type='text/javascript' src='http://www.blueb.co.kr/data/201010/IJ12872423858253/jquery.js'></script>
+<script type='text/javascript' src='http://www.blueb.co.kr/data/201010/IJ12872423858253/fullcalendar.min.js'></script>
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			editable: true,
+			events: [
+				{
+					title: 'PKL Phose2 2019   #2주차 Day3',
+					start: new Date(y, m, 1,19,0),
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #3주차 Day1',
+					start: new Date(y, m, 3,19,0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #3주차 Day2',
+					start: new Date(y, m, 5, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #3주차 Day3',
+					start: new Date(y, m, 8, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #4주차 Day1',
+					start: new Date(y, m, 10, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #4주차 Day2',
+					start: new Date(y, m, 12, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #4주차 Day3',
+					start: new Date(y, m, 15, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #5주차 Day1',
+					start: new Date(y, m,17, 19, 0),
+				
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #5주차 Day2',
+					start: new Date(y, m, 19, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #5주차 Day3',
+					start: new Date(y, m, 22, 19, 0),
+					
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #6주차 Day1',
+					start: new Date(y, m, 24, 19, 0),
+			
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #6주차 Day2',
+					start: new Date(y, m, 26, 19, 0),
+				
+					allDay: false
+				},
+				{
+					title: 'PKL Phose2 2019   #6주차 Day3',
+					start: new Date(y, m, 29, 19, 0),
+				
+					allDay: false
+				},
+			]
+		});
+		
+	});
+
+</script>
+<style type='text/css'>
+
+	#cal {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+</head>
+<body>
+<div id= 'cal'>
+<div id='calendar'></div>
+</div>
+</body>
+</html>
