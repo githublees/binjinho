@@ -117,7 +117,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 %>		&nbsp;&nbsp;&nbsp;<%
 	}
 	if(indent!=0){
-%>		<img src="reply_icon.gif" />
+%>		<img src="reply_icon.png" />
 <%
 	}
 %>
