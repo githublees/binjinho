@@ -385,10 +385,11 @@
           </section>
 
 			</div>
-							<div id="footer1">
-									<div class="slider close">
+							<div id="footer1" style="display: block;">
+									<div class="slider">
 										<button class="closer" onclick="chat();" style="float:right;" value="닫기"></button>
-										<iframe src="http://uchat.ch/jinho" height="400" width="700" style="margin:40px 30px"></iframe> 
+										<iframe src="http://uchat.ch/jinho" height="450" width="700" style="margin: 20 10 20 300;"></iframe> 
+										<iframe src="pollList.jsp" height="450" width="700" style="margin: auto 20 20 20;"></iframe> 
 									</div>
 							</div>
 		<!-- Footer -->
