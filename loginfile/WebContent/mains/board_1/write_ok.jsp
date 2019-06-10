@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>  
+<%@ page import="user.User"%>  
+<%@ page import="user.UserDAO"%>  
 <%
 	request.setCharacterEncoding("euc-kr");
 
@@ -9,7 +11,18 @@ String driver = "org.mariadb.jdbc.Driver";
 String url = "jdbc:mariadb://localhost:7009/stone";
 	String uid = "root";
 	String pwd = "1001";
-	String name = request.getParameter("name");
+	
+	UserDAO user = new UserDAO();
+    String userID = null;
+    int tag = 0;
+ 
+    if (session.getAttribute("userID") != null){
+       userID = (String)session.getAttribute("userID");
+       tag = Integer.parseInt(user.getTag(userID));
+    }
+    System.out.println(userID);
+    
+	String name = userID;
 	String password = request.getParameter("password");
 	String title = request.getParameter("title");
 	String memo = request.getParameter("memo");

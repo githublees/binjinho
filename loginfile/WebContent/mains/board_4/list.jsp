@@ -2,7 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
-
+<%@ page import="user.User"%>
+<%@ page import="user.UserDAO"%>
+<%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 <%
 	final int ROWSIZE = 10 ;
 	final int BLOCK = 5;
@@ -42,7 +44,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		Statement stmt1 = conn.createStatement();
 		String sql = "";
 
-		String sqlCount = "SELECT COUNT(*) FROM board";
+		String sqlCount = "SELECT COUNT(*) FROM board_4";
 		ResultSet rs = stmt.executeQuery(sqlCount);
 		
 		if(rs.next()){
@@ -50,13 +52,13 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		}
 
 		int sort=1;
-		String sqlSort = "SELECT NUM from board order by ref desc, step asc";
+		String sqlSort = "SELECT NUM from board_4 order by ref desc, step asc";
 		rs = stmt.executeQuery(sqlSort);
 	
 		
 		while(rs.next()){
 			int stepNum = rs.getInt(1);
-			sql = "UPDATE board SET STEP2=" + sort + " where NUM=" +stepNum;
+			sql = "UPDATE board_4 SET STEP2=" + sort + " where NUM=" +stepNum;
 		 	stmt1.executeUpdate(sql);
 		 	sort++;
 		}
@@ -69,7 +71,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		
 		out.print("총 게시물 : " + total + "개");
 		
-		String sqlList = "SELECT NUM, USERNAME, TITLE, TIME, HIT, INDENT from board where STEP2 >="+start + " and STEP2 <= "+ end +" order by step2 asc";
+		String sqlList = "SELECT NUM, USERNAME, TITLE, TIME, HIT, INDENT from board_4 where STEP2 >="+start + " and STEP2 <= "+ end +" order by step2 asc";
 		rs = stmt.executeQuery(sqlList);
 		
 %>
@@ -146,7 +148,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 //	out.println( e.toString() );
 }
 %>
- <tr height="1" bgcolor="#82B5DF"><td colspan="6" width="752"></td></tr>
+ <tr height="1" bgcolor="yellow"><td colspan="6" width="752"></td></tr>
  </table>
  
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -187,7 +189,22 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		</td>
 		</tr>
 		  <tr align="center">
+   		  <% 
+			UserDAO user = new UserDAO();
+		 	String userID = null;
+		 	int tag = 0;
+		 	
+		    if (session.getAttribute("userID") != null){
+		       userID = (String)session.getAttribute("userID");
+		       tag = Integer.parseInt(user.getTag(userID));
+		    }
+		     
+			if(userID != null){
+		  %>
    <td><input type=button value="글쓰기" OnClick="window.location='write.jsp'"></td>
+   		  <% 
+			}
+   		  %>
   </tr>
  </table>
  </body>

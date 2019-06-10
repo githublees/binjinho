@@ -36,7 +36,7 @@
 				<tr>
 					<td>시작일</td>
 					<td colspan="2"><select name="sdateY">
-							<option value="2015">2015
+							<option value="2019">2019
 					</select>년 <select name="sdateM">
 							<%
 								for (int i = 1; i <= 12; i++) {
@@ -54,7 +54,7 @@
 				<tr>
 					<td>종료일</td>
 					<td colspan=2><select name="edateY">
-							<option value="2015">2015
+							<option value="2019">2019
 					</select>년 <select name="edateM">
 							<%
 								for (int i = 1; i <= 12; i++) {

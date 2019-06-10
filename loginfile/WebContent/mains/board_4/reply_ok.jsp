@@ -24,7 +24,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		Connection conn = DriverManager.getConnection(url,uid,pwd);
 		Statement stmt = conn.createStatement();
 		
-		String sql = "SELECT REF, INDENT, STEP FROM board WHERE NUM=" + idx;
+		String sql = "SELECT REF, INDENT, STEP FROM board_4 WHERE NUM=" + idx;
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		if(rs.next()) {
@@ -33,10 +33,10 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 			step = rs.getInt(3);
 		}
 		
-		sql = "UPDATE board SET STEP=STEP+1 where REF="+ref+" and STEP>" +step;
+		sql = "UPDATE board_4 SET STEP=STEP+1 where REF="+ref+" and STEP>" +step;
 		stmt.executeUpdate(sql);
 		
-		sql = "INSERT INTO board(USERNAME, PASSWORD, TITLE, MEMO, REF, INDENT, STEP) "+
+		sql = "INSERT INTO board_4(USERNAME, PASSWORD, TITLE, MEMO, REF, INDENT, STEP) "+
 				"values(?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, name);

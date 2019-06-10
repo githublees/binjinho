@@ -26,14 +26,14 @@ function deleteCheck()
  </head>
  <body>
 <table>
-<form name=deleteform method=post action="delete_ok.jsp?idx%>&pg=<%=pg%>">
+<form name=deleteform method=post action="delete_ok.jsp?idx=<%=idx%>&pg=<%=pg%>">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
+     <tr style="background:url('table_mid.gif') repeat-x; text-align:center;">
+      <td width="5"><img src="table_left.gif" width="5" height="30" /></td>
       <td>ªË¡¶</td>
-      <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+      <td width="5"><img src="table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
    <table>

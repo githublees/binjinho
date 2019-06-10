@@ -118,28 +118,28 @@
 							<div class="home-game-list">
                 <ol>
                                             <li class="home-game-list__item home-game-list__item--lol">
-                            <a href="https://talk.op.gg/s/lol">
+                            <a href="index_lol.jsp">
                                 <div class="home-game__background" style="background-image: url('assets/css/images/LOL.JPG');"></div>
                                <h2 class="home-game__title" style="color:white";>리그오브레전드</h2>
                                 
                             </a>
                         </li>
                                             <li class="home-game-list__item home-game-list__item--pubg">
-                            <a href="https://talk.op.gg/s/pubg">
+                            <a href="index_bat.jsp">
                                 <div class="home-game__background" style="background-image: url('assets/css/images/BATTLE.JPG');"></div>
                                 <h2 class="home-game__title" style="color:white">배틀그라운드</h2>
                                 
                             </a>
                         </li>
                                             <li class="home-game-list__item home-game-list__item--autochess">
-                            <a href="https://talk.op.gg/s/autochess">
+                            <a href="#">
                                 <div class="home-game__background" style="background-image: url('assets/css/images/AUTO.JPG');"></div>
                                 <h2 class="home-game__title" style="color:white">오토체스</h2>
                                 
                             </a>
                         </li>
                                             <li class="home-game-list__item home-game-list__item--ow">
-                            <a href="https://talk.op.gg/s/ow">
+                            <a href="#">
                                 <div class="home-game__background" style="background-image: url('assets/css/images/OVER.JPG');"></div>
                                 <h2 class="home-game__title" style="color:white">오버워치</h2>
                                 
@@ -212,14 +212,13 @@
 					</section>
 
 				<!-- About Me -->
-					<section id="about" class="three">
-						<div class="container">
+<section id="contact" class="four">
+				<div class="container">
 
 							<header>
-								<h2>Notice</h2>
+								<h2>공지사항</h2>
 							</header>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
 							<div class="container">
 								<div class="row" id="index">
 									<table class="table table-striped" style="text-align: center; border: 1px solid #ddddddd">
@@ -231,6 +230,7 @@
 												<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 											</tr>
 										</thead>
+
 										<tbody>
 											<%
 												bbsDAO bbsDAO = new bbsDAO();
@@ -272,6 +272,7 @@
 							</div>
 
 						</div>
+
 					</section>
 
 				<!-- Contact -->
@@ -405,14 +406,20 @@
                 </div>
             </div>
             </div>
+            																						<div class="ib_box W100 banner_box container" style="margin-left : 95px; margin-top : 60px;  ">
+    <div id="module_1559921581_7052_94438" class="section banner sizeup">
+    <!-- ==================== Module [banner] Begin ==================== -->
+        <ul class="banner "><li class = "rows1"><a href="https://www.marketinven.com/custom_game_pc/5?site=lol" class="link_img" target="_blank"><span class="thumb_img"><img src="images/i14712376736.jpg" /></span></a></li></ul>
+    <!-- ==================== Module [banner] End ==================== -->
+    </div></div>
           </section>
 
            
-							<div id="footer1" style="display: block;">
-									<div class="slider">
+							<div id="footer1">
+									<div class="slider close">
 										<button class="closer" onclick="chat();" style="float:right;" value="닫기"></button>
-										<iframe src="http://uchat.ch/jinho" height="450" width="700" style="margin: 20 10 20 300;"></iframe> 
-										<iframe src="pollList.jsp" height="450" width="700" style="margin: auto 20 20 20;"></iframe> 
+										<iframe src="http://uchat.ch/jinho" height="450" width="700" style="margin: 20 10 20 300;"></iframe>  
+									<iframe src="pollList.jsp" height="450" width="700" style="margin: auto 20 20 20;"></iframe> 
 									</div>
 							</div>
 		<!-- Footer -->

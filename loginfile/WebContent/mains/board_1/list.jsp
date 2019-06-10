@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="user.User"%>
+<%@ page import="user.UserDAO"%>
 <%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 
 <%
@@ -73,6 +75,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		rs = stmt.executeQuery(sqlList);
 		
 %>
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr height="5"><td width="5"></td></tr>
  <tr style="background:url('table_mid.gif') repeat-x; text-align:center;">
@@ -187,7 +190,22 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		</td>
 		</tr>
 		  <tr align="center">
+		  <% 
+			UserDAO user = new UserDAO();
+		 	String userID = null;
+		 	int tag = 0;
+		 	
+		    if (session.getAttribute("userID") != null){
+		       userID = (String)session.getAttribute("userID");
+		       tag = Integer.parseInt(user.getTag(userID));
+		    }
+		     
+			if(userID != null){
+		  %>
    <td><input type=button value="±Û¾²±â" OnClick="window.location='write.jsp'"></td>
+   		  <% 
+			}
+   		  %>
   </tr>
  </table>
  </body>

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="user.User"%>
+<%@ page import="user.UserDAO"%>
+<%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 <%
 String driver = "org.mariadb.jdbc.Driver";
 	Class.forName(driver);
@@ -16,7 +19,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		Connection conn = DriverManager.getConnection(url,uid,pwd);
 		Statement stmt = conn.createStatement();
 		
-		String sql = "SELECT USERNAME, TITLE, MEMO, TIME, HIT FROM board WHERE NUM=" + idx;
+		String sql = "SELECT USERNAME, TITLE, MEMO, TIME, HIT FROM board_3 WHERE NUM=" + idx;
 		ResultSet rs = stmt.executeQuery(sql);
 		 if(rs.next()){
 				String name = rs.getString(1);
@@ -50,41 +53,41 @@ String url = "jdbc:mariadb://localhost:7009/stone";
       <td width="319"><%=idx%></td>
       <td width="0">&nbsp;</td>
      </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
+	 <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="76">조회수</td>
       <td width="319"><%=hit%></td>
       <td width="0">&nbsp;</td>
      </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
+	 <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="76">이름</td>
       <td width="319"><%=name%></td>
       <td width="0">&nbsp;</td>
      </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
+     <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="76">작성일</td>
       <td width="319"><%=time%></td>
       <td width="0">&nbsp;</td>
      </tr>
-      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
+      <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="76">제목</td>
       <td width="319"><%=title%></td>
       <td width="0">&nbsp;</td>
      </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
+     <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
                 <tr>
       <td width="0"></td>
                    <td width="399" colspan="2" height="200"><%=memo %>
                 </tr>
                 <% 
- 	sql = "UPDATE board SET HIT=" + hit + " where NUM=" +idx;
+ 	sql = "UPDATE board_3 SET HIT=" + hit + " where NUM=" +idx;
  	stmt.executeUpdate(sql);
  	rs.close();
  	stmt.close();
@@ -95,15 +98,29 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 
 %>
      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4" width="407"></td></tr>
+     <tr height="1" bgcolor="green"><td colspan="4" width="407"></td></tr>
      <tr align="center">
       <td width="0">&nbsp;</td>
+      	  <% 
+			UserDAO user = new UserDAO();
+		 	String userID = null;
+		 	int tag = 0;
+		 	
+		    if (session.getAttribute("userID") != null){
+		       userID = (String)session.getAttribute("userID");
+		       tag = Integer.parseInt(user.getTag(userID));
+		    }
+		     
+			if(userID != null){
+		  %>
       <td colspan="2" width="399"><input type=button value="글쓰기"  OnClick="window.location='write.jsp'">
-	<input type=button value="답글" OnClick="window.location='reply.jsp?idx=<%=idx%>&pg=<%=pg%>'">
-	<input type=button value="목록" OnClick="window.location='list.jsp?pg=<%=pg%>'">
-	<input type=button value="수정" OnClick="window.location='modify.jsp?idx=<%=idx%>&pg=<%=pg%>'">
-	<input type=button value="삭제" OnClick="window.location='delete.jsp?idx=<%=idx%>&pg=<%=pg%>'">
-
+	<input type=button value="답글" OnClick="window.location='reply.jsp?idx=<%=idx%>&pg=<%=pg%>'"/>
+	<input type=button value="목록" OnClick="window.location='list.jsp?pg=<%=pg%>'"/>
+	<input type=button value="수정" OnClick="window.location='modify.jsp?idx=<%=idx%>&pg=<%=pg%>'"/>
+	<input type=button value="삭제" OnClick="window.location='delete.jsp?idx=<%=idx%>&pg=<%=pg%>'"/>
+	<%
+			}
+	%>
       <td width="0">&nbsp;</td>
      </tr>
     </table>

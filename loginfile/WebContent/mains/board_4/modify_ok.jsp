@@ -23,7 +23,7 @@
 			Connection conn = DriverManager.getConnection(url,uid,pwd);
 			Statement stmt = conn.createStatement();
 		
-			String sql = "SELECT PASSWORD FROM board WHERE NUM=" + idx;
+			String sql = "SELECT PASSWORD FROM board_4 WHERE NUM=" + idx;
 			ResultSet rs = stmt.executeQuery(sql);
 		
 		 if(rs.next()){
@@ -31,7 +31,7 @@
 		 }
 		
 		 if(password.equals(passw)) {
-				sql = "UPDATE board SET TITLE='" + title+ "' ,MEMO='"+ memo +"' WHERE NUM=" + idx;				
+				sql = "UPDATE board_4 SET TITLE='" + title+ "' ,MEMO='"+ memo +"' WHERE NUM=" + idx;				
 				stmt.executeUpdate(sql);
 				
 %>

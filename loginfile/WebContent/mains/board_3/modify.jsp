@@ -21,7 +21,7 @@ try {
 	Connection conn = DriverManager.getConnection(url,uid,pwd);
 	Statement stmt = conn.createStatement();
 	
-	String sql = "SELECT USERNAME, PASSWORD, TITLE, MEMO FROM board WHERE NUM=" + idx;
+	String sql = "SELECT USERNAME, PASSWORD, TITLE, MEMO FROM board_3 WHERE NUM=" + idx;
 	ResultSet rs = stmt.executeQuery(sql);
 
 	
@@ -82,10 +82,10 @@ function modifyCheck()
    <td>
    <form name=modifyform method=post action="modify_ok.jsp?idx=<%=idx%>&pg=<%=pg%>">
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
+     <tr style="background:url('table_mid.gif') repeat-x; text-align:center;">
+      <td width="5"><img src="table_left.gif" width="5" height="30" /></td>
       <td>수정</td>
-      <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+      <td width="5"><img src="table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
 <table>
@@ -117,7 +117,7 @@ function modifyCheck()
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
+     <tr height="1" bgcolor="green"><td colspan="4"></td></tr>
      <tr align="center">
       <td>&nbsp;</td>
       <td colspan="2"><input type="button" value="수정" OnClick="javascript:modifyCheck();">

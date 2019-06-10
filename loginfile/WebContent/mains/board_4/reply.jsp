@@ -56,7 +56,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		Statement stmt = conn.createStatement();
 
 		
-		String sql = "SELECT TITLE FROM board WHERE NUM=" + idx;
+		String sql = "SELECT TITLE FROM board_4 WHERE NUM=" + idx;
 		ResultSet rs = stmt.executeQuery(sql);
 
  		if(rs.next()){
@@ -117,7 +117,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
+     <tr height="1" bgcolor="yellow"><td colspan="4"></td></tr>
      <tr align="center">
       <td>&nbsp;</td>
       <td colspan="2"><input type=button value="µî·Ï"  OnClick="javascript:replyCheck();">

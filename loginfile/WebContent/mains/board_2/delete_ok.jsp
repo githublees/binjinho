@@ -18,7 +18,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		Connection conn = DriverManager.getConnection(url,uid,pwd);
 		Statement stmt = conn.createStatement();
 		
-		String sql = "SELECT PASSWORD FROM board WHERE NUM=" + idx;
+		String sql = "SELECT PASSWORD FROM board_2 WHERE NUM=" + idx;
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		 if(rs.next()){
@@ -27,7 +27,7 @@ String url = "jdbc:mariadb://localhost:7009/stone";
 		 
 		 if(password.equals(passw)) {
 			   			
-			sql = "DELETE FROM board WHERE NUM=" + idx;	
+			sql = "DELETE FROM board_2 WHERE NUM=" + idx;	
 			stmt.executeUpdate(sql);	 
 %>
   			<script language=javascript>

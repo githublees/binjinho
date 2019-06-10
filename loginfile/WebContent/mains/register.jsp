@@ -20,6 +20,7 @@
 			if(session.getAttribute("userID") != null) {
 				userID = (String)session.getAttribute("userID");
 		}
+
 		if(user.getUserID() == null || user.getUserEmail() == null || user.getUserPassword()==null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -29,6 +30,7 @@
 		} else {
 			UserDAO userDAO = new UserDAO();
 			int result = userDAO.join(user);
+			System.out.println(result);
 		if (result == -1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -36,7 +38,7 @@
 			script.println("history.back()");
 			script.println("</script>");
 		}
-		else if (result == 0){
+		else if (result == 1){
 			session.setAttribute("userID",user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
