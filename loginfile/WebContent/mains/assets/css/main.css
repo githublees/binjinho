@@ -1968,6 +1968,9 @@
 		.icon > .label {
 			display: none;
 		}
+		.icon > .chat {
+			display: none;
+		}
 
 /* Header */
 
@@ -2086,7 +2089,7 @@
 /* Footer */
 
 	#footer {
-		margin-left: 375px;
+		width: 100%;
 		text-align: center;
 		background-color: #dce3e2;
 		padding: 3em 0 4em 0;
@@ -2128,7 +2131,6 @@
 			text-align: center;
 			background-image: url("images/overlay.png");
 		}
-	
 			#main > section.dark {
 				color: #ddd;
 				color: rgba(255, 255, 255, 0.75);
@@ -2194,7 +2196,7 @@
 		/* Footer */
 
 			#footer {
-				margin-left: 300px;
+				width: 100%;
 			}
 
 		/* Main */
@@ -2277,7 +2279,7 @@
 		/* Footer */
 
 			#footer {
-				margin-left: 20%;
+				width: 100%;
 			}
 
 		/* Main */
@@ -2450,7 +2452,7 @@
 		/* Footer */
 
 			#footer {
-				margin-left: 0;
+				width: 100%;
 			}
 
 		/* Main */

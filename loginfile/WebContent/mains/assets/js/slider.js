@@ -1,10 +1,11 @@
-$('.triggerbtn').click(function() {
-	
-	 if($("#footer1").css("display") == "none"){   
-	        jQuery('#footer1').show();
-	    }
-	 else {  
-	        jQuery('#footer1').hide();
-	    }  
-	 $('.slider').toggleClass('close');
-	});
+function chat(){
+
+	if($("#footer1").css("display") == "none"){   
+		$("#footer1").show(100, function(){
+			$('.slider').toggleClass('close');
+		  });
+	}else {
+		$('.slider').toggleClass('close');
+		$("#footer1").hide();
+	}
+};
