@@ -1,89 +1,50 @@
-<%@page import="java.io.*" %>
-<%@page import="java.sql.*" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="user.UserDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty name="user" property="userEmail" />
+<jsp:setProperty property="userPassword" name="user"/>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Register</title>
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Login</title>
 </head>
 <body>
 
 	<%
-			// Get parameter value from HTML
-			String userName = request.getParameter("userName");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-
-			
-
-			String driver = "org.mariadb.jdbc.Driver";		
-			Connection connect = null;
-			Statement stmt = null;
-			String url = "jdbc:mariadb://localhost:3305/registerdb";
-			String uid = "root";
-			String pwd = "wkzm1478";
-
-			try{
-			
-				Class.forName(driver);
-				
-				connect = DriverManager.getConnection(url, uid, pwd);
-
-				if(connect != null){
-
-
-					// Check duplicated user
-					String query = "SELECT count(1) num FROM users WHERE username = ? OR email = ? ;";
-
-					PreparedStatement ps = connect.prepareStatement(query);
-					ps.setString(1, userName);
-					ps.setString(2, email);			
-
-
-					ResultSet rs = ps.executeQuery();
-					boolean foundUser = false;
-
-					if( rs.next() ){
-						
-						if(rs.getInt(1) > 0)
-							foundUser = true;
-					}
-
-
-					if(foundUser){
-						out.println("<script>alert('Register fail! User is duplicated!')</script>");
-						out.println("<script>window.location='./register.html'</script>");
-					}else {
-
-						query = "INSERT INTO users(username, email, pwd) VALUES(?,?,?);";
-
-						ps = connect.prepareStatement(query);
-						ps.setString(1, userName);
-						ps.setString(2, email);
-						ps.setString(3, password);
-						ps.executeQuery();
-					%>	
-						<script>window.location.href='./login.html'</script>
-
-					<%
-					}
-
-					ps.close();
-					connect.close();
-					
-				}else{
-					out.println("Database cannot be connected!");
-				}
-			}catch(Exception e){
-				out.println(e.getMessage()); 
-				e.printStackTrace();
-			}	
-
-			
-		
+		String userID = null;
+			if(session.getAttribute("userID") != null) {
+				userID = (String)session.getAttribute("userID");
+		}
+		if(user.getUserID() == null || user.getUserEmail() == null || user.getUserPassword()==null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('입력이 안 된 사항이 있습니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		} else {
+			UserDAO userDAO = new UserDAO();
+			int result = userDAO.join(user);
+		if (result == -1){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('이미 존재하는 아이디입니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		else if (result == 0){
+			session.setAttribute("userID",user.getUserID());
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("location.href = 'login.html'");
+			script.println("</script>");
+		}
+	}
 	%>
 
-	
 </body>
 </html>

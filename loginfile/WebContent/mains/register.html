@@ -25,17 +25,17 @@
          <form class="modal-register animate" action="register.jsp" method="post">
                
                    <label>User name</label>
-	               <input type="text" class="form-control" placeholder="User name" name="userName" id="userName" required="">
+	               <input type="text" class="form-control" placeholder="User name" name="userID" id="userID" required>
                 
 	               <label>Email</label>
-                   <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="">
+                   <input type="email" class="form-control" placeholder="Email" name="userEmail" id="userEmail" required>
                 
                    <label>Password</label>
-                   <input type="password" class="form-control" placeholder="Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number 
-				and one uppercase and lowercase letter, and at least 8 or more characters" required="">
+                   <input type="password" class="form-control" placeholder="Password" name="userPassword" id="userPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number 
+				and one uppercase and lowercase letter, and at least 8 or more characters" required>
                    
                     <label>Confirm your password</label>
-	                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required="">
+	                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required>
                   
                    <button type="submit" class="btn btn-black" name="submitButton" value="Submit" id="submitButton">Submit</button>
                   <button type="reset" class="btn btn-secondary" name="resetButton" value="Clear" id="resetButton">Clear</button>
@@ -49,7 +49,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
      $("#submitButton").click(function () {
-            var password = $("#password").val();
+            var password = $("#userPassword").val();
             var confirmPassword = $("#confirmPassword").val();
             if (password != confirmPassword) {
                 alert("Passwords do not match.");

@@ -1,69 +1,54 @@
-<%@page import="java.util.*, java.io.*, java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="user.UserDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty property="userPassword" name="user"/>
+<jsp:setProperty property="tag" name="user"/>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Login</title>
-	
 </head>
 <body>
-	
 	<%
-			String userNameOrEmail = request.getParameter("userNameOrEmail");
-			String password = request.getParameter("password");
-				
-			Connection connect = null;
-			
-            String driver = "org.mariadb.jdbc.Driver";	
-			String url = "jdbc:mariadb://localhost:3305/registerdb";
-			String uid = "root";
-			String pwd = "wkzm1478";
-
-			try{
-			
-				Class.forName(driver);
-				
-				connect = DriverManager.getConnection(url, uid, pwd);
-
-				if(connect != null){
-					String query = "SELECT count(1) num FROM users WHERE (username = ? OR email = ?) AND pwd = ?;";
-
-					PreparedStatement ps = connect.prepareStatement(query);
-					ps.setString(1, userNameOrEmail);
-					ps.setString(2, userNameOrEmail);
-					ps.setString(3, password);
-
-
-					ResultSet rs = ps.executeQuery();
-					boolean foundUser = false;
-
-					if( rs.next() ){
-						
-						if(rs.getInt(1) > 0)
-							foundUser = true;
-					}
-
-
-					if(foundUser){
-					%>
-						<script>window.location='.index.html'</script>	
-					<%
-					}else{
-						out.println("<script>alert('Login fail! Please check your information again!')</script>");
-						out.println("<script>window.location.href='./index.html'</script>");
-
-					}
-
-					ps.close();
-					connect.close();
-					
-				}else{
-					out.println("Database cannot be connected!");
-				}
-			}catch(Exception e){
-				out.println(e.getMessage()); 
-				e.printStackTrace();
-			}			
-	%>
+		String userID = null;
+		if(session.getAttribute("userID") != null) {
+			userID = (String)session.getAttribute("userID");
+		}
+		UserDAO userDAO = new UserDAO();
+		int result = userDAO.login(user.getUserID(), user.getUserPassword());
+		if (result == 1){
+			session.setAttribute("userID",user.getUserID());
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("location.href = 'index.jsp'");
+			script.println("</script>");
+		}
+		else if (result == 0){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('비밀번호가 틀립니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		else if (result == -1){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('존재하지 않는 아이디입니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		else if (result == -2){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('데이터베이스 오류가 발생했습니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		%>
 </body>
 </html>
